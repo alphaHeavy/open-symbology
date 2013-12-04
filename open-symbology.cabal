@@ -1,0 +1,21 @@
+Name:                bloomberg-open-symbology
+Version:             0.1
+License:             BSD3
+Author:              Alpha Heavy Industries
+Maintainer:          sseverance@alphaheavy.com
+Category:            Finance
+Build-type:          Simple
+Cabal-version:       >=1.10
+
+Library
+  Default-language: Haskell2010
+  Exposed-modules: Finance.OpenSymbology
+                   Finance.OpenSymbology.PricingSources
+                   Finance.OpenSymbology.Types
+  Build-depends: attoparsec,
+                 base,
+                 conduit,
+                 mtl,
+                 text
+
+  GHC-Options:   -Wall -Werror -auto-all
