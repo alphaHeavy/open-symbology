@@ -5,3 +5,10 @@ cabal-dev
 *.chi
 *.chs.h
 .virthualenv
+*.swp
+*shake*
+Tools/BuildPricingSources
+Tools/PricingSourceAbbreviations.hs
+Tools/PricingSourceCategories.hs
+Tools/PricingSourceDescriptions.hs
+Tools/PricingSources.hs
