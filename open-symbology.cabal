@@ -10,6 +10,7 @@ Cabal-version:       >=1.10
 Library
   Default-language: Haskell2010
   Exposed-modules: Finance.OpenSymbology
+                   Finance.OpenSymbology.Parser
                    Finance.OpenSymbology.PricingSources
                    Finance.OpenSymbology.Types
   Build-depends: attoparsec,

@@ -74,6 +74,7 @@ data Description =
   | ASXAustralianSecuritiesExchange
   | ASXAustralianSecuritiesExchangeAndAustraliaComposite
   | AurigaGlobalInvestors
+  | WienerBörseViennaStockExchangeAndAustriaComposite
   | RaiffeisenBankAval
   | ASXAustralianSecuritiesExchangeASX24
   | ANZBankCNYFX
@@ -168,7 +169,7 @@ data Description =
   | BancoItauBrazilBonds
   | INGBelgium
   | BanjaLukaStockExchangeAndBanjaLukaComposite
-  | BrÃ¼llKalmusBank
+  | BrüllKalmusBank
   | AltaeBancoPrivadoSA
   | BankofNewYork
   | BloombergFXCalculatedPricing
@@ -584,10 +585,12 @@ data Description =
   | DeutscheBankPeru
   | DeutscheBankPakistan
   | DBSBankSingapore
+  | None
   | DeutscheBankTHBFX
   | DBSBankTaiwan
   | DeutscheBankILSGovernmentBondsAndFX
   | DeutscheBankTaiwan
+  | DeutscheBörse
   | DenmarkCompositeNASDAQOMXCopenhagen
   | DeriviumCapital
   | DalianCommodityExchange
@@ -630,6 +633,7 @@ data Description =
   | DatatecChile
   | ChiXCanadaVentureExchange
   | ChinaDevelopmentBankCNYBonds
+  | DerivexMercadodeDerivadosdeCommoditiesEnergéticos
   | DaiwaCapitalMarketsGlobalConvertibleBonds
   | DaiwaCapitalMarketsKorea
   | TurquoiseEquityFutures
@@ -793,7 +797,7 @@ data Description =
   | BerlinBremenStockExchange
   | RBSUSBondsbyMaturity
   | GCRCapitalGmbH
-  | DÃ¼sseldorfStockExchange
+  | DüsseldorfStockExchange
   | GovernmentDebtManagementAgencyHungary
   | XetraEuropeanStars
   | RBSMarketplace
@@ -1065,6 +1069,7 @@ data Description =
   | JPMorganChaseBankUruguay
   | JerseyEquityFunds
   | AktieTorget
+  | OberösterreichischeLandesbankAG
   | KazakhstanStockExchangeMorningSession
   | KazakhstanStockExchangeDaySession
   | KazakhstanStockExchangeEveningSession
@@ -1116,9 +1121,9 @@ data Description =
   | Landsbankinn
   | LandesbankBerlin
   | LandesbankBerlinEURDeposits
-  | LBBWLandesbankBadenWÃ¼rttemberg
+  | LBBWLandesbankBadenWürttemberg
   | BanqueLBLuxSA
-  | LBBWLandesbankBadenWÃ¼rttembergFiduciaryDeposits
+  | LBBWLandesbankBadenWürttembergFiduciaryDeposits
   | NYSEEuronextLondon
   | TurquoiseDerivatives
   | LiechtensteinComposite
@@ -1491,6 +1496,7 @@ data Description =
   | RussellGlobalStyleIndices
   | RHBBankBerhad
   | RHBBankBerhadThailand
+  | OberösterreichischeLandesbankLinz
   | RZBRaiffeisenZentralbankFixedIncomePricing
   | MICEXMoscowInterbankCurrencyExchangeAndRussiaComposite
   | RBSMediumTermNotes
@@ -1688,6 +1694,7 @@ data Description =
   | TaipeiFubonBankDepositRates
   | TokyoFinancialExchange
   | OmegaATS
+  | DeutscheBörseTradegate
   | ThanachartBankPublicCompanyLtd
   | IstanbulStockExchange
   | INGTurkey
@@ -1873,6 +1880,7 @@ data Description =
   | ViennaStockExchangeOTC
   | MarkitBOAT
   | ChiXOTC
+  | DeutscheBörseOTC
   | NYSEEuronextOTC
   | XetraBonds
   | IrishStockExchangeOTC
@@ -1887,6 +1895,7 @@ data Description =
   | OMXOTC
   | PLUSStockExchangePlcOTC
   | ReutersOTC
+  | BörseStuttgartOTC
   | AthensOTCStockExchange
   | BulgariaOTC
   | SIXSwissOffExchange
@@ -1913,6 +1922,6 @@ data Description =
   | MorganStanleyFXStreamingM
   | FXStreamingR
   | ZimbabweStockExchange
-  | ZÃ¼rcherKantonalbank
+  | ZürcherKantonalbank
   | LusakaStockExchange
   deriving (Ord,Eq,Show,Read)

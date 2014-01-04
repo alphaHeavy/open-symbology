@@ -1,6 +1,8 @@
 module Finance.OpenSymbology.Types (
     BloombergEntry (..)
   , BloombergId (..)
+  , BloombergName (..)
+  , BloombergSymbol (..)
   , PricingSource (..)
   ) where
 
@@ -11,12 +13,16 @@ import Finance.OpenSymbology.PricingSourceDescriptions
 
 data BloombergId = BloombergId {bId :: Text} deriving (Eq,Ord,Show)
 
+data BloombergName = BloombergName {bName :: Text} deriving (Eq,Ord,Show)
+
+data BloombergSymbol = BloombergSymbol {bSymbol :: Text} deriving (Eq,Ord,Show)
+
 data BloombergEntry =
   BloombergHeader |
   BloombergEntry {
-    beName :: Text,
-    beSymbol :: Text,
-    bePricingSource :: Maybe PricingSource,
+    beName :: BloombergName,
+    beSymbol :: BloombergSymbol,
+    bePricingSource :: Maybe Abbreviation,
     beSecurityType :: Maybe Text,
     beMarketSector :: Text,
     beBloombergId :: BloombergId,

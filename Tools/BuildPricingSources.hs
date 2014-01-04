@@ -18,7 +18,7 @@ import System.IO
 parseFile :: String -> IO [(Text,Text,Text)]
 parseFile path = runResourceT $
   CB.sourceFile path $$
-    CT.decode CT.iso8859_1 =$=
+    CT.decode CT.utf8 =$=
     CT.lines =$=
     CL.map (\ line -> either (\ x -> Nothing) id $ parseRow (CSVSettings ',' (Just '"')) $ T.concat [line,"\n"]) =$=
     CL.catMaybes =$=
@@ -27,10 +27,11 @@ parseFile path = runResourceT $
 
 emitFiles :: [(Text,Text,Text)] -> IO ()
 emitFiles sources = do
-  emitPricingSourceDescriptions $ L.zip [0..] $ L.filter (\x  -> T.length x > 0) $ L.nub $ fmap (\ (_,_,desc) -> fixName desc) $ L.drop 1 sources
+  emitPricingSourceDescriptions $ L.zip [0..] $ L.filter (\x  -> T.length x > 0) $ L.nub $ fmap (\ (_,_,desc) -> fixDescription desc) $ L.drop 1 sources
   emitPricingSourceAbbreviations $ L.zip [0..] $ L.nub $ fmap (\ (_,abbr,_) -> uppercaseFirstLetter abbr) $ L.drop 1 sources
   emitCategories $ L.zip [0..] $ L.nub $ fmap (\ (cat,_,_) -> fixCategory cat) $ L.drop 1 sources
   emitPricingSources $ L.drop 1 sources
+  emitPricingSourceParsers $ L.zip [0..] $ L.nub $ fmap (\ (_,abbr,_) -> uppercaseFirstLetter abbr) $ L.drop 1 sources
 
 emitPricingSourceDescriptions :: [(Int,Text)] -> IO ()
 emitPricingSourceDescriptions sources =
@@ -92,12 +93,13 @@ emitPricingSources sources =
                      T.concat ["  PricingSource ",
                                fixCategory cat,
                                " Finance.OpenSymbology.PricingSourceAbbreviations.",
-                               uppercaseFirstLetter abbr, " Finance.OpenSymbology.PricingSourceDescriptions.", fixName desc]) sources), "]"]
+                               uppercaseFirstLetter abbr, " Finance.OpenSymbology.PricingSourceDescriptions.", fixDescription desc]) sources), "]"]
     T.hPutStr handle sources'
 
 fixCategory name = T.replace " " "" $ T.replace "only" "Only" $ T.replace ")" "" $ T.replace "(" "" $ T.replace "," "" name
 
-fixName name = uppercaseFirstLetter $
+fixDescription "" = "None"
+fixDescription name = uppercaseFirstLetter $
                  T.replace "/" "" $
                  T.replace "+" "Plus" $
                  T.replace "'" "" $
@@ -121,6 +123,30 @@ uppercaseFirstLetter x =
 {-
 emitParsers :: [()]
 -}
+
+emitPricingSourceParsers :: [(Int,Text)] -> IO ()
+emitPricingSourceParsers sources =
+  withFile "PricingSourceParsers.hs" WriteMode $ \ handle -> do
+    T.hPutStrLn handle "{-# LANGUAGE OverloadedStrings #-}"
+    T.hPutStrLn handle "module Finance.OpenSymbology.PricingSourceParsers where"
+    T.hPutStrLn handle ""
+    T.hPutStrLn handle "import Control.Applicative"
+    T.hPutStrLn handle "import qualified Data.Attoparsec.Text as A"
+    T.hPutStrLn handle "import Finance.OpenSymbology.PricingSourceAbbreviations"
+    T.hPutStrLn handle "import Prelude hiding(EQ,GT)"
+    T.hPutStrLn handle ""
+    T.hPutStrLn handle "pricingSourceParser :: A.Parser (Maybe Abbreviation)"
+    T.hPutStrLn handle "pricingSourceParser ="
+    runResourceT $
+      CL.sourceList sources $$
+      CL.map (\ (index,abbrev) ->if index == 0 then formatFirstLine abbrev else formatLine abbrev) =$=
+      CT.encode CT.utf8 =$=
+      CB.sinkHandle handle
+    T.hPutStrLn handle "  <|> pure Nothing"
+
+  where
+    formatFirstLine abbrev = T.concat["    A.string \"",abbrev,"\" *> pure (Just ", abbrev, ")\n"]
+    formatLine abbrev = T.concat["  <|> A.string \"",abbrev,"\" *> pure (Just ", abbrev, ")\n"]
 
 main :: IO ()
 main = do
