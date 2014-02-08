@@ -12,3 +12,4 @@ Tools/PricingSourceAbbreviations.hs
 Tools/PricingSourceCategories.hs
 Tools/PricingSourceDescriptions.hs
 Tools/PricingSources.hs
+Tools/PricingSourceParsers.hs
