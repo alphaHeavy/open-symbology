@@ -12,6 +12,7 @@ Library
   Exposed-modules: Finance.OpenSymbology
                    Finance.OpenSymbology.Parser
                    Finance.OpenSymbology.PricingSources
+                   Finance.OpenSymbology.PricingSourceAbbreviations
                    Finance.OpenSymbology.Types
   Build-depends: attoparsec,
                  base,
