@@ -11,7 +11,9 @@ Library
   Default-language: Haskell2010
   Exposed-modules: Finance.OpenSymbology
                    Finance.OpenSymbology.Parser
+                   Finance.OpenSymbology.PricingSourceCategories
                    Finance.OpenSymbology.PricingSources
+                   Finance.OpenSymbology.PricingSourceDescriptions
                    Finance.OpenSymbology.PricingSourceAbbreviations
                    Finance.OpenSymbology.Types
   Build-depends: attoparsec,
