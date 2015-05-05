@@ -69,6 +69,7 @@ data Abbreviation =
   | ANZK
   | ANZV
   | AO
+  | AP
   | AQ
   | AR
   | ARCA
@@ -83,11 +84,12 @@ data Abbreviation =
   | AV
   | AVAL
   | AXG
-  | AY 
+  | AY
   | AZCN
   | AZES
   | AZIO
   | AZMF
+  | B3
   | BA
   | BAAG
   | BAAM
@@ -220,6 +222,7 @@ data Abbreviation =
   | BMSP
   | BMTN
   | BMTS
+  | BN
   | BNAP
   | BNBP
   | BNCR
@@ -309,6 +312,7 @@ data Abbreviation =
   | BVC
   | BVMT
   | BVPA
+  | BW
   | BX
   | BXAB
   | BXAP
@@ -321,6 +325,7 @@ data Abbreviation =
   | BXPM
   | BY
   | BZ
+  | C1
   | CAAG
   | CABG
   | CACN
@@ -428,7 +433,7 @@ data Abbreviation =
   | CGSP
   | CGUK
   | CGUS
-  | CH 
+  | CH
   | CHBE
   | CHBK
   | CHBQ
@@ -652,6 +657,7 @@ data Abbreviation =
   | DFIX
   | DFM
   | DFX
+  | DG
   | DGC
   | DGZF
   | DH
@@ -907,6 +913,7 @@ data Abbreviation =
   | GVP5
   | GW
   | GY
+  | H1
   | HACN
   | HAN
   | HANP
@@ -1132,6 +1139,7 @@ data Abbreviation =
   | JT
   | JU
   | JUYU
+  | JW
   | JY
   | KA
   | KAGR
@@ -1186,6 +1194,7 @@ data Abbreviation =
   | KSEP
   | KY
   | KZ
+  | L3
   | LAIS
   | LB
   | LBB
@@ -1510,6 +1519,7 @@ data Abbreviation =
   | PN
   | PNMA
   | PNX
+  | PO
   | POHB
   | PP
   | PQ
@@ -1530,12 +1540,16 @@ data Abbreviation =
   | PYSA
   | PZ
   | QANB
+  | QF
   | QD
+  | QH
   | QITO
   | QM
   | QNBQ
   | QSE
+  | QT
   | QU
+  | QX
   | RAAL
   | RABF
   | RABO
@@ -1629,6 +1643,7 @@ data Abbreviation =
   | RZ
   | RZBB
   | S1
+  | S2
   | SA
   | SACM
   | SAFC
@@ -2033,6 +2048,7 @@ data Abbreviation =
   | XS
   | XT
   | XU
+  | XV
   | XW
   | YC
   | YELW

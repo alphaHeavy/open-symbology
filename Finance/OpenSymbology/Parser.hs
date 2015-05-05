@@ -9,12 +9,14 @@ import qualified Data.Text as T
 import Finance.OpenSymbology.PricingSourceParsers
 import Finance.OpenSymbology.Types
 
+--import Finance.OpenSymbology.PricingSourceAbbreviations
 
 entryParser :: Parser BloombergEntry
 entryParser = parseHeader <|> (mkBloombergEntry
     <$> (parseColumn                          <?> "0 Name")
     <*> (parseColumn                          <?> "1 Ticker")
-    <*> ((pricingSourceParser <* A.char '|')  <?> "2 PricingSource")
+    <*> ((pricingSourceParser <* (A.try $ A.char '|'))  <?> "2 PricingSource")
+--    <*> ((A.string "US" *> pure (Just US) <* A.char '|')  <?> "2 PricingSource")
     <*> ((textToMaybe <$> parseColumn)        <?> "3 SourceId")
     <*> ((textToMaybe <$> parseColumn)        <?> "4 UniqueId")
     <*> ((textToMaybe <$> parseColumn)        <?> "5 SecurityType")

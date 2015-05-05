@@ -64,6 +64,7 @@ data Description =
   | ANZBankCNYAndCNHFXRates
   | ANZBankVietnamFXAndForwardRates
   | NSXNationalStockExchangeofAustralia
+  | MissingPricingSource
   | ASXPurematch
   | ArgentinaComposite
   | Meliorbanca
@@ -74,7 +75,7 @@ data Description =
   | ASXAustralianSecuritiesExchange
   | ASXAustralianSecuritiesExchangeAndAustraliaComposite
   | AurigaGlobalInvestors
-  | WienerBörseViennaStockExchangeAndAustriaComposite
+  | WienerBorseViennaStockExchangeAndAustriaComposite
   | RaiffeisenBankAval
   | ASXAustralianSecuritiesExchangeASX24
   | ANZBankCNYFX
@@ -169,7 +170,7 @@ data Description =
   | BancoItauBrazilBonds
   | INGBelgium
   | BanjaLukaStockExchangeAndBanjaLukaComposite
-  | BrüllKalmusBank
+  | BrullKalmusBank
   | AltaeBancoPrivadoSA
   | BankofNewYork
   | BloombergFXCalculatedPricing
@@ -590,7 +591,7 @@ data Description =
   | DBSBankTaiwan
   | DeutscheBankILSGovernmentBondsAndFX
   | DeutscheBankTaiwan
-  | DeutscheBörse
+  | DeutscheBorse
   | DenmarkCompositeNASDAQOMXCopenhagen
   | DeriviumCapital
   | DalianCommodityExchange
@@ -633,7 +634,7 @@ data Description =
   | DatatecChile
   | ChiXCanadaVentureExchange
   | ChinaDevelopmentBankCNYBonds
-  | DerivexMercadodeDerivadosdeCommoditiesEnergéticos
+  | DerivexMercadodeDerivadosdeCommoditiesEnergeticos
   | DaiwaCapitalMarketsGlobalConvertibleBonds
   | DaiwaCapitalMarketsKorea
   | TurquoiseEquityFutures
@@ -797,7 +798,7 @@ data Description =
   | BerlinBremenStockExchange
   | RBSUSBondsbyMaturity
   | GCRCapitalGmbH
-  | DüsseldorfStockExchange
+  | DusseldorfStockExchange
   | GovernmentDebtManagementAgencyHungary
   | XetraEuropeanStars
   | RBSMarketplace
@@ -1069,7 +1070,7 @@ data Description =
   | JPMorganChaseBankUruguay
   | JerseyEquityFunds
   | AktieTorget
-  | OberösterreichischeLandesbankAG
+  | OberosterreichischeLandesbankAG
   | KazakhstanStockExchangeMorningSession
   | KazakhstanStockExchangeDaySession
   | KazakhstanStockExchangeEveningSession
@@ -1121,9 +1122,9 @@ data Description =
   | Landsbankinn
   | LandesbankBerlin
   | LandesbankBerlinEURDeposits
-  | LBBWLandesbankBadenWürttemberg
+  | LBBWLandesbankBadenWurttemberg
   | BanqueLBLuxSA
-  | LBBWLandesbankBadenWürttembergFiduciaryDeposits
+  | LBBWLandesbankBadenWurttembergFiduciaryDeposits
   | NYSEEuronextLondon
   | TurquoiseDerivatives
   | LiechtensteinComposite
@@ -1496,7 +1497,7 @@ data Description =
   | RussellGlobalStyleIndices
   | RHBBankBerhad
   | RHBBankBerhadThailand
-  | OberösterreichischeLandesbankLinz
+  | OberosterreichischeLandesbankLinz
   | RZBRaiffeisenZentralbankFixedIncomePricing
   | MICEXMoscowInterbankCurrencyExchangeAndRussiaComposite
   | RBSMediumTermNotes
@@ -1694,7 +1695,7 @@ data Description =
   | TaipeiFubonBankDepositRates
   | TokyoFinancialExchange
   | OmegaATS
-  | DeutscheBörseTradegate
+  | DeutscheBorseTradegate
   | ThanachartBankPublicCompanyLtd
   | IstanbulStockExchange
   | INGTurkey
@@ -1880,7 +1881,7 @@ data Description =
   | ViennaStockExchangeOTC
   | MarkitBOAT
   | ChiXOTC
-  | DeutscheBörseOTC
+  | DeutscheBorseOTC
   | NYSEEuronextOTC
   | XetraBonds
   | IrishStockExchangeOTC
@@ -1895,7 +1896,7 @@ data Description =
   | OMXOTC
   | PLUSStockExchangePlcOTC
   | ReutersOTC
-  | BörseStuttgartOTC
+  | BorseStuttgartOTC
   | AthensOTCStockExchange
   | BulgariaOTC
   | SIXSwissOffExchange
@@ -1922,6 +1923,6 @@ data Description =
   | MorganStanleyFXStreamingM
   | FXStreamingR
   | ZimbabweStockExchange
-  | ZürcherKantonalbank
+  | ZurcherKantonalbank
   | LusakaStockExchange
   deriving (Ord,Eq,Show,Read)

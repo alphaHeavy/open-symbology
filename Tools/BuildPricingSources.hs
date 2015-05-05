@@ -1,6 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
+import Control.Monad
+import Control.Monad.Trans.Resource
 import qualified Data.ByteString as B
 import Data.Conduit
 import qualified Data.Conduit.Binary as CB
@@ -15,15 +17,33 @@ import qualified Data.Text.IO as T
 import System.Environment
 import System.IO
 
+import Debug.Trace
+
 parseFile :: String -> IO [(Text,Text,Text)]
 parseFile path = runResourceT $
   CB.sourceFile path $$
-    CT.decode CT.utf8 =$=
-    CT.lines =$=
+    CT.decode CT.iso8859_1 =$=
+    linesWindows =$=
     CL.map (\ line -> either (\ x -> Nothing) id $ parseRow (CSVSettings ',' (Just '"')) $ T.concat [line,"\n"]) =$=
     CL.catMaybes =$=
     CL.map (\ x -> (head x,x !! 1,x !! 2)) =$=
     CL.consume
+
+linesWindows :: Monad m => Conduit T.Text m T.Text
+linesWindows =
+    awaitText T.empty
+  where
+    awaitText buf = await >>= maybe (finish buf) (process buf)
+
+    finish buf = unless (T.null buf) (yield buf)
+
+    process buf text = yieldLines $ buf `T.append` text
+
+    yieldLines buf =
+      let (line, rest) = T.breakOn "\r" buf
+      in  case trace (show line) $ T.uncons rest of
+            Just (_, rest') -> yield line >> yieldLines rest'
+            _ -> awaitText line
 
 emitFiles :: [(Text,Text,Text)] -> IO ()
 emitFiles sources = do
