@@ -1,7 +1,10 @@
 Name:                open-symbology
 Version:             0.1
 License:             BSD3
-Author:              Alpha Heavy Industries
+Author:              Steve Severance
+Description:         An implementation of BSYM in Haskell.
+homepage:            https://github.com/alphaHeavy/open-symbology
+bug-reports:         https://github.com/alphaHeavy/open-symbology/issues
 Maintainer:          sseverance@alphaheavy.com
 Category:            Finance
 Build-type:          Simple
@@ -24,3 +27,7 @@ Library
                  text
 
   GHC-Options:   -Wall -Werror -auto-all
+
+source-repository head
+  type:     git
+  location: https://github.com/alphaHeavy/open-symbology.git
