@@ -21,12 +21,12 @@ Library
                    Finance.OpenSymbology.PricingSourceParsers
                    Finance.OpenSymbology.Types
   Build-depends: attoparsec,
-                 base,
+                 base < 5,
                  conduit,
                  mtl,
                  text
 
-  GHC-Options:   -Wall -Werror -auto-all
+  GHC-Options:   -Wall -auto-all
 
 source-repository head
   type:     git
